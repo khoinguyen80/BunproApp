@@ -1,4 +1,4 @@
-﻿@model BunproApp.Models.Todo
+﻿@model IEnumerable<BunproApp.Models.Todo>
 @{
     ViewBag.Title = "Index";
 }
@@ -22,11 +22,15 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <th scope="row">@Model.Id</th>
-            <td>@Model.Description</td>
-            <td>@Model.DueDate.ToString("d")</td>
-        </tr>
+        @foreach (var item in @Model)
+        {
+            <tr>
+                <th scope="row">@item.Id</th>
+                <td>@item.Description</td>
+                <td>@item.DueDate.ToString("d")</td>
+            </tr>
+        }
+
     </tbody>
 </table>
 
