@@ -1,6 +1,4 @@
 ﻿using BunproApp.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -23,6 +21,21 @@ namespace BunproApp.Controllers
         public ActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(Todo todo)
+        {
+            var newTodo = new Todo()
+            {
+                Description = todo.Description,
+                DueDate = todo.DueDate
+            };
+
+            _context.Todos.Add(newTodo);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Todos");
         }
     }
 }
