@@ -1,14 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.ComponentModel.DataAnnotations;
 
 namespace BunproApp.Models
 {
     public class Todo
     {
+        [Key]
         public int Id { get; set; }
+        [Required]
+        [StringLength(255)]
         public string Description { get; set; }
+        [Required]
         public DateTime DueDate { get; set; }
 
     }
